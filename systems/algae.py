@@ -1,3 +1,4 @@
+from assert_utils import assert_array
 '''
  variables A, B 
  constants None 
@@ -38,10 +39,7 @@ def assert_gen_algae():
         "ABAABABAABAABABAABABAABAABABAABAAB",
     ] 
     actual = gen_algae("A", verborse=False)
-    for i, row in enumerate(actual):
-        for j, l in enumerate(row):
-            expected_row = expected[i] 
-            assert l == expected_row[j] 
+    assert_array(actual, expected)
 
 assert_gen_algae()
 
