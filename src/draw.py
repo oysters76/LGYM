@@ -1,5 +1,6 @@
 
 from turtle import * 
+from lsystem import gen_lsystem 
 
 def draw_dragon(generation):
     clearscreen() 
@@ -47,7 +48,7 @@ def draw_si_traingle(generation):
             right(60)
     done()
 
-def draw_tree(generation):
+def draw_tree(generation,angle=45):
     clearscreen() 
     speed("fastest")
     mode("logo")
@@ -72,7 +73,7 @@ def draw_tree(generation):
             down()
     done()
 
-def draw_fractal_plant(generation):
+def draw_fractal_plant(generation,angle=40,f=4):
     clearscreen() 
     speed("fastest")
     mode("logo")
@@ -84,11 +85,11 @@ def draw_fractal_plant(generation):
         if token == "X":
             continue 
         if token == "F":
-            forward(5) 
+            forward(f) 
         if token == "+":
-            left(25) 
+            left(angle) 
         if token == "-":
-            right(25)
+            right(angle)
         if token == "[":
             stack.append([position(), heading()])
         if token == "]":
@@ -98,5 +99,10 @@ def draw_fractal_plant(generation):
             setheading(h) 
             down()
     done()
+
+def draw_fractal_plant_custom(rules,angle=40,f=5):
+    gen = gen_lsystem("F", rules=rules,iterations=10, verbose=False) 
+    draw_fractal_plant(gen[9],angle,f)
+
 
 
