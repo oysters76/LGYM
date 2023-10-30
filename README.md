@@ -1,4 +1,4 @@
-# L System Implementations 
+# LGYM
 
 This project was created to learn more about L-Systems and model them. 
 This project aims to implement all the L-System variations found in the following wikipedia article: https://en.wikipedia.org/wiki/L-system
