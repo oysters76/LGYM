@@ -22,5 +22,5 @@ To run a L-System that draws a "tree" like structure, simply use:
 
 All of the above new ideas would be implemented using "golang" and "ebitengine" 
 
-[golang](https://go.dev/)             : Much faster than Python, suitable for writing this simulation project.
-[ebitengine](https://ebitengine.org/) : For rendering graphics and GUI. 
+1. [golang](https://go.dev/)             : Much faster than Python, suitable for writing this simulation project.
+2. [ebitengine](https://ebitengine.org/) : For rendering graphics and GUI. 
