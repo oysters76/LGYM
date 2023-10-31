@@ -20,7 +20,7 @@ To run a L-System that draws a "tree" like structure, simply use:
    draw_fractal_plant_custom({"F":"F[+X]F[-X]+X"},angle=40,f=5) 
 ```
 
-All of the above new ideas would be implemented using "golang" and "ebitengine" 
+All of the above new ideas would be implemented using "golang" and "raylib" (go has a raylib binding)
 
 1. [golang](https://go.dev/)             : Much faster than Python, suitable for writing this simulation project.
-2. [ebitengine](https://ebitengine.org/) : For rendering graphics and GUI. 
+2. [raylib](https://github.com/gen2brain/raylib-go) : For rendering graphics and GUI. 
