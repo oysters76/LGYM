@@ -6,6 +6,13 @@ import (
 	"bytes"
 )
 
+const CMD_FORWARD  = "FORWARD"   //go forward
+const CMD_BACKWARD = "BACKWARD"  //go backward
+const CMD_LEFT     = "LEFT"      //turn left at angle 'a'
+const CMD_RIGHT    = "RIGHT"     //turn right at angle 'a'
+const CMD_PUSH     = "PUSH"      //push or save state (location/angle)
+const CMD_POP      = "POP"       //pop or load state (location/angle)
+
 func generate_lsystem(axiom string, 
 					  rules map[string]string, 
 					  iteration int,
@@ -34,12 +41,35 @@ func generate_lsystem(axiom string,
 	return current_generation;
 }
 
+func generate_program(lsys string, command_map map[string]string) []string{
+	size := utf8.RuneCountInString(lsys) 
+	var prog = make([]string, 0, 100)
+	for i:=0; i < size; i++{
+		ch := lsys[i] 
+		val,exists := command_map[string(ch)] 
+		if (!exists){
+			fmt.Println("[ERROR] Incompatible L-System with given command map!") 
+			break;
+		}
+		prog = append(prog, val)
+	}
+	return prog
+}
 
 func main(){
-	//example
+	//example for generating an l-system and generating it's draw program.
 	rules := make(map[string]string) 
 	rules["F"] = "F+F-F-F+F" 
 	axiom := "F" 
 	gen := generate_lsystem(axiom, rules, 1, false)
 	fmt.Println("gen : ", gen)
+
+	prog_rules := make(map[string]string) 
+	prog_rules["F"] = CMD_FORWARD 
+	prog_rules["+"] = CMD_LEFT 
+	prog_rules["-"] = CMD_RIGHT 
+ 	prog := generate_program(gen, prog_rules)
+	for i := 0; i < len(prog); i++{
+		fmt.Println("line ",i, ": ", prog[i])
+	}
 }
