@@ -9,7 +9,7 @@ PRs are welcome!
 
 ## Future Increments to the project: 
 
-1. I would be implementing a front-end GUI for L-Systems so anyone can define "symbols", "axioms", so that users run their own "rules" and generate iterations.
+1. I would be implementing a front-end GUI for L-Systems so anyone can define "symbols", "axioms", so that users run their own "rules" and generate iterations based on those rules.
 2. I would also be looking into "infering l-systems", specifically "tree" based structures via one-shot or few-shot learning. ( I have a novel concept in mind I'm deciding to work on in this repo, probably in a seperate branch called "inference" )
 3. I would be moving the "python" code to a seperate folder inside SRC called "prototype" since this was just the proof of concept.
 4. Currently all L-Systems in the wikipedia article have been implemented in this repo.
