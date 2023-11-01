@@ -29,13 +29,30 @@ func DrawLine(x int32, y int32, x2 int32, y2 int32) {
 	rl.DrawLine(x, y, x2, y2, rl.RayWhite)
 }
 
+/*
+Structure that stores the position and angle at current timestep in PUSH.
+POP retrieves this state.
+*/
 type State struct {
 	x       int32
 	y       int32
 	c_angle int32
 }
 
-func Renderlsystem(prog []string, size int, magnitude int32, width int32, height int32, angle int32, ix int32, iy int32) {
+/*
+This function renders a l-system given the program commands.
+prog     : the array of commands (e.g. FORWARD, BACKWARD, LEFT, RIGHT, POP, PUSH)
+size     : the size of the array of commands
+magnitude: the size of the backward or forward stride
+width    : the width of the render screen
+height   : the height of the render screen
+angle    : the angle of turning, LEFT/RIGHT
+ix       : inital x position
+iy       : inital y position
+*/
+func Renderlsystem(prog []string, size int,
+	magnitude int32, width int32, height int32,
+	angle int32, ix int32, iy int32) {
 	rl.InitWindow(width, height, "raylib [core] example - basic window")
 	defer rl.CloseWindow()
 	rl.SetTargetFPS(60)
