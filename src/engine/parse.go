@@ -46,9 +46,9 @@ func ReadInt(intValRef *int32, data *map[string]interface{}, intField string, er
 
 func ReadMap(mapRef *map[string]string, data *map[string]interface{}, field string) {
 	datamap := GetSafe(*data, field)
-	switch v := datamap.(type) {
-	case string:
-		log.Fatalf("[ERROR]: key '%s' not found!, 'cmds' describes how to draw the l-system %s", field, v)
+	switch datamap.(type) {
+	case string: //string means there is no map data type found in file
+		log.Fatalf("[ERROR]: key '%s' not found! It is required!", field)
 	}
 	dmap, ok := datamap.(map[string]string)
 	if !ok {
