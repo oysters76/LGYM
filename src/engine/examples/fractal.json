@@ -1,0 +1,21 @@
+{
+    "axiom":"A", 
+    "iterations":"5",
+    "magnitude":"2",
+    "angle":"25",
+    "ix":"5",
+    "iy":"10",
+    "width":"800",
+    "height":"1200",
+    "cmds":{
+        "A":"FORWARD",
+        "B":"LEFT",
+        "C":"RIGHT",
+        "D":"POP",
+        "G":"PUSH"
+    },
+    "rules":{
+        "A":"ABCDEF",
+        "B":"CD"
+    }
+}

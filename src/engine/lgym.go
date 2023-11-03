@@ -12,6 +12,8 @@ const CMD_LEFT = "LEFT"         //turn left at angle 'a'
 const CMD_RIGHT = "RIGHT"       //turn right at angle 'a'
 const CMD_PUSH = "PUSH"         //push or save state (location/angle)
 const CMD_POP = "POP"           //pop or load state (location/angle)
+var ALL_COMMANDS = []string{CMD_FORWARD, CMD_BACKWARD, CMD_LEFT, CMD_RIGHT,
+	CMD_POP, CMD_PUSH}
 
 func generate_lsystem(axiom string,
 	rules map[string]string,
