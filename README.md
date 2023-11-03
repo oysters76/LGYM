@@ -31,10 +31,10 @@ All of the above new ideas would be implemented using "golang" and "raylib" (go 
 The following simple golang program illustrates the process in which this tool can be used: 
 
 ```go
- func main(){
+func main(){
    lconfig := Parse("examples/fractal.json") //load l-system config
-	gen := generate_lsystem(&lconfig, false)  // generate l-system string
-	prog := generate_program(gen, &lconfig)   // convert symbols to graphic program commands
-	Renderlsystem(prog, len(prog), &lconfig)  // render graphics via commands
- }
+   gen := generate_lsystem(&lconfig, false)  // generate l-system string
+   prog := generate_program(gen, &lconfig)   // convert symbols to graphic program commands
+   Renderlsystem(prog, len(prog), &lconfig)  // render graphics via commands
+}
 ```
