@@ -15,6 +15,7 @@ import (
 )
 
 type LConfig struct {
+	title     string
 	iteration int32
 	rules     map[string]string
 	cmds      map[string]string
@@ -33,6 +34,7 @@ func Dump(label string, val interface{}) {
 
 func DumpLConfig(config *LConfig) {
 	fmt.Println("------------------- LConfig Dump --------------------")
+	Dump("Title", config.title)
 	Dump("Iterations", config.iteration)
 	Dump("Axiom", config.axiom)
 	Dump("Magnitude", config.magintude)
@@ -82,6 +84,7 @@ func CreateLConfig(data map[string]interface{}) LConfig {
 
 	//Read String
 	config.axiom = GetSafe(data, "axiom").(string)
+	config.title = GetSafe(data, "title").(string)
 
 	//Read ints
 	ReadInt(&config.magintude, &data, "magnitude", "Cannot read 'magnitude' from json")

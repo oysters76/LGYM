@@ -1,21 +1,19 @@
 {
-    "axiom":"A", 
-    "iteration":"5",
-    "magnitude":"2",
-    "angle":"25",
-    "ix":"5",
-    "iy":"10",
-    "width":"800",
-    "height":"1200",
+    "title":"My first l-system!",
+    "axiom":"F", 
+    "iteration":"10",
+    "magnitude":"5",
+    "angle":"60",
+    "ix":"500",
+    "iy":"400",
+    "width":"1200",
+    "height":"800",
     "cmds":{
-        "A":"FORWARD",
-        "B":"LEFT",
-        "C":"RIGHT",
-        "D":"POP",
-        "G":"PUSH"
+        "F":"FORWARD",
+        "+":"LEFT",
+        "-":"RIGHT"
     },
     "rules":{
-        "A":"ABCDEF",
-        "B":"CD"
+        "F":"F+F-F-F+F"
     }
 }

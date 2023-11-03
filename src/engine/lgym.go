@@ -15,18 +15,16 @@ const CMD_POP = "POP"           //pop or load state (location/angle)
 var ALL_COMMANDS = []string{CMD_FORWARD, CMD_BACKWARD, CMD_LEFT, CMD_RIGHT,
 	CMD_POP, CMD_PUSH}
 
-func generate_lsystem(axiom string,
-	rules map[string]string,
-	iteration int,
+func generate_lsystem(lconfig *LConfig,
 	verbose bool) string {
-	current_generation := axiom
+	current_generation := lconfig.axiom
 	var next_generation bytes.Buffer
 
-	for i := 0; i < iteration; i++ {
+	for i := 0; i < int(lconfig.iteration); i++ {
 		size := utf8.RuneCountInString(current_generation)
 		for j := 0; j < size; j++ {
 			ch := current_generation[j]
-			val, exists := rules[string(ch)]
+			val, exists := lconfig.rules[string(ch)]
 			if !exists {
 				next_generation.WriteString(string(ch))
 				continue
@@ -43,12 +41,12 @@ func generate_lsystem(axiom string,
 	return current_generation
 }
 
-func generate_program(lsys string, command_map map[string]string) []string {
+func generate_program(lsys string, lconfig *LConfig) []string {
 	size := utf8.RuneCountInString(lsys)
 	var prog = make([]string, 0, 100)
 	for i := 0; i < size; i++ {
 		ch := lsys[i]
-		val, exists := command_map[string(ch)]
+		val, exists := lconfig.cmds[string(ch)]
 		if !exists {
 			fmt.Println("[ERROR] Incompatible L-System with given command map!")
 			break
@@ -59,20 +57,8 @@ func generate_program(lsys string, command_map map[string]string) []string {
 }
 
 func main() {
-	//example for generating an l-system and generating it's draw program.
-	// rules := make(map[string]string)
-	// rules["F"] = "F+F-F-F+F"
-	// axiom := "F"
-	// gen := generate_lsystem(axiom, rules, 10, false)
-
-	// prog_rules := make(map[string]string)
-	// prog_rules["F"] = CMD_FORWARD
-	// prog_rules["+"] = CMD_LEFT
-	// prog_rules["-"] = CMD_RIGHT
-	// prog := generate_program(gen, prog_rules)
-
-	// Renderlsystem(prog, len(prog), 5, 1500, 1000, 60, 500, 500)
-
-	lconfig := Parse("examples/fractal.json")
-	DumpLConfig(&lconfig)
+	lconfig := Parse("examples/fractal.json") //load l-system config
+	gen := generate_lsystem(&lconfig, false)  // generate l-system string
+	prog := generate_program(gen, &lconfig)   // convert symbols to graphic program commands
+	Renderlsystem(prog, len(prog), &lconfig)  // render graphics via commands
 }

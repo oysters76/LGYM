@@ -25,3 +25,16 @@ All of the above new ideas would be implemented using "golang" and "raylib" (go 
 
 1. [golang](https://go.dev/)             : Much faster than Python, suitable for writing this simulation project.
 2. [raylib](https://github.com/gen2brain/raylib-go) : For rendering graphics and GUI. 
+
+
+## Basic Usage 
+The following simple golang program illustrates the process in which this tool can be used: 
+
+```go
+ func main(){
+   lconfig := Parse("examples/fractal.json") //load l-system config
+	gen := generate_lsystem(&lconfig, false)  // generate l-system string
+	prog := generate_program(gen, &lconfig)   // convert symbols to graphic program commands
+	Renderlsystem(prog, len(prog), &lconfig)  // render graphics via commands
+ }
+```

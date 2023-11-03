@@ -51,13 +51,12 @@ ix       : inital x position
 iy       : inital y position
 */
 func Renderlsystem(prog []string, size int,
-	magnitude int32, width int32, height int32,
-	angle int32, ix int32, iy int32) {
-	rl.InitWindow(width, height, "raylib [core] example - basic window")
+	lconfig *LConfig) {
+	rl.InitWindow(lconfig.width, lconfig.height, lconfig.title)
 	defer rl.CloseWindow()
 	rl.SetTargetFPS(60)
-	var x int32 = ix
-	var y int32 = iy
+	var x int32 = lconfig.ix
+	var y int32 = lconfig.iy
 	var dx int32 = 0
 	var dy int32 = 0
 	var c_angle int32 = 0
@@ -72,14 +71,14 @@ func Renderlsystem(prog []string, size int,
 		switch prog[ind] {
 		case CMD_BACKWARD:
 			shouldDrawLine = true
-			dx, dy = PolarToXY(-magnitude, ToRad(c_angle))
+			dx, dy = PolarToXY(-lconfig.magintude, ToRad(c_angle))
 		case CMD_FORWARD:
 			shouldDrawLine = true
-			dx, dy = PolarToXY(magnitude, ToRad(c_angle))
+			dx, dy = PolarToXY(lconfig.magintude, ToRad(c_angle))
 		case CMD_RIGHT:
-			c_angle += -angle
+			c_angle += -lconfig.angle
 		case CMD_LEFT:
-			c_angle += angle
+			c_angle += lconfig.angle
 		case CMD_PUSH:
 			prog_stack = append(prog_stack, State{x: x, y: y, c_angle: c_angle})
 		case CMD_POP:
