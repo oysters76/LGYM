@@ -48,17 +48,20 @@ func generate_program(lsys string, lconfig *LConfig) []string {
 		ch := lsys[i]
 		val, exists := lconfig.cmds[string(ch)]
 		if !exists {
-			fmt.Println("[ERROR] Incompatible L-System with given command map!")
-			break
+			continue
 		}
 		prog = append(prog, val)
 	}
 	return prog
 }
 
+func RunLSystem(filename string) {
+	lconfig := Parse(filename)
+	gen := generate_lsystem(&lconfig, false) // generate l-system string
+	prog := generate_program(gen, &lconfig)  // convert symbols to graphic program commands
+	Renderlsystem(prog, len(prog), &lconfig) // render graphics via commands
+}
+
 func main() {
-	lconfig := Parse("examples/fractal.json") //load l-system config
-	gen := generate_lsystem(&lconfig, false)  // generate l-system string
-	prog := generate_program(gen, &lconfig)   // convert symbols to graphic program commands
-	Renderlsystem(prog, len(prog), &lconfig)  // render graphics via commands
+	RunLSystem("examples/fractal.json")
 }
