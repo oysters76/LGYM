@@ -7,6 +7,7 @@ package main
 
 import (
 	"encoding/json"
+	"fmt"
 	"io"
 	"log"
 	"os"
@@ -24,6 +25,24 @@ type LConfig struct {
 	iy        int32
 	width     int32
 	height    int32
+}
+
+func Dump(label string, val interface{}) {
+	fmt.Println(label, ":", val)
+}
+
+func DumpLConfig(config *LConfig) {
+	fmt.Println("------------------- LConfig Dump --------------------")
+	Dump("Iterations", config.iteration)
+	Dump("Axiom", config.axiom)
+	Dump("Magnitude", config.magintude)
+	Dump("Angle", config.angle)
+	Dump("Inital X", config.ix)
+	Dump("Inital Y", config.iy)
+	Dump("Width", config.width)
+	Dump("Height", config.height)
+	Dump("Rules", config.rules)
+	Dump("Commands", config.cmds)
 }
 
 // Reads a field safely from a map, returns an empty string if key is not found
@@ -50,11 +69,11 @@ func ReadMap(mapRef *map[string]string, data *map[string]interface{}, field stri
 	case string: //string means there is no map data type found in file
 		log.Fatalf("[ERROR]: key '%s' not found! It is required!", field)
 	}
-	dmap, ok := datamap.(map[string]string)
-	if !ok {
-		log.Fatalf("[ERROR]: couldn't process field %s", field)
+	var res = map[string]string{}
+	for k, v := range datamap.(map[string]interface{}) {
+		res[k] = v.(string)
 	}
-	*mapRef = dmap
+	*mapRef = res
 }
 
 // Constructs LConfig from 'data' map

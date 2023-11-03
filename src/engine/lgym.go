@@ -60,16 +60,19 @@ func generate_program(lsys string, command_map map[string]string) []string {
 
 func main() {
 	//example for generating an l-system and generating it's draw program.
-	rules := make(map[string]string)
-	rules["F"] = "F+F-F-F+F"
-	axiom := "F"
-	gen := generate_lsystem(axiom, rules, 10, false)
+	// rules := make(map[string]string)
+	// rules["F"] = "F+F-F-F+F"
+	// axiom := "F"
+	// gen := generate_lsystem(axiom, rules, 10, false)
 
-	prog_rules := make(map[string]string)
-	prog_rules["F"] = CMD_FORWARD
-	prog_rules["+"] = CMD_LEFT
-	prog_rules["-"] = CMD_RIGHT
-	prog := generate_program(gen, prog_rules)
+	// prog_rules := make(map[string]string)
+	// prog_rules["F"] = CMD_FORWARD
+	// prog_rules["+"] = CMD_LEFT
+	// prog_rules["-"] = CMD_RIGHT
+	// prog := generate_program(gen, prog_rules)
 
-	Renderlsystem(prog, len(prog), 5, 1500, 1000, 60, 500, 500)
+	// Renderlsystem(prog, len(prog), 5, 1500, 1000, 60, 500, 500)
+
+	lconfig := Parse("examples/fractal.json")
+	DumpLConfig(&lconfig)
 }
