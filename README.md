@@ -27,7 +27,7 @@ All of the above new ideas would be implemented using "golang" and "raylib" (go 
 2. [raylib](https://github.com/gen2brain/raylib-go) : For rendering graphics and GUI. 
 
 
-## Basic Usage 
+## Basic Usage via Golang (Still in development) 
 The following simple golang program illustrates the process in which this tool can be used: 
 
 ```go
