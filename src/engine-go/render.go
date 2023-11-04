@@ -39,16 +39,27 @@ type State struct {
 	c_angle int32
 }
 
+type Vec2d struct {
+	x float64
+	y float64
+}
+
+func Rotate(vec Vec2d, angle int32) Vec2d {
+	//     perp = Vec2D(-self[1], self[0])
+	//     angle = math.radians(angle)
+	//     c, s = math.cos(angle), math.sin(angle)
+	//     return Vec2D(self[0]*c+perp[0]*s, self[1]*c+perp[1]*s)
+	perp := Vec2d{-vec.y, vec.x}
+	rad := ToRad(angle)
+	c, s := math.Sincos(rad)
+	return Vec2d{vec.x*c + perp.x*s, vec.y*c + perp.y*s}
+}
+
 /*
 This function renders a l-system given the program commands.
 prog     : the array of commands (e.g. FORWARD, BACKWARD, LEFT, RIGHT, POP, PUSH)
 size     : the size of the array of commands
-magnitude: the size of the backward or forward stride
-width    : the width of the render screen
-height   : the height of the render screen
-angle    : the angle of turning, LEFT/RIGHT
-ix       : inital x position
-iy       : inital y position
+lconfig  : the L-System configuration
 */
 func Renderlsystem(prog []string, size int,
 	lconfig *LConfig) {
@@ -76,9 +87,9 @@ func Renderlsystem(prog []string, size int,
 			shouldDrawLine = true
 			dx, dy = PolarToXY(lconfig.magintude, ToRad(c_angle))
 		case CMD_RIGHT:
-			c_angle += -lconfig.angle
+			c_angle = -lconfig.angle
 		case CMD_LEFT:
-			c_angle += lconfig.angle
+			c_angle = lconfig.angle
 		case CMD_PUSH:
 			prog_stack = append(prog_stack, State{x: x, y: y, c_angle: c_angle})
 		case CMD_POP:
@@ -95,6 +106,17 @@ func Renderlsystem(prog []string, size int,
 			y += dy
 		}
 		ind += 1
+		rl.EndDrawing()
+	}
+}
+
+func TestDrawing() {
+	rl.InitWindow(1200, 800, "helloworld")
+	defer rl.CloseWindow()
+	for !rl.WindowShouldClose() {
+		rl.BeginDrawing()
+		dx, dy := PolarToXY(50, ToRad(360))
+		DrawLine(1200/2, 800/2, 1200/2+dx, 800/2+dy)
 		rl.EndDrawing()
 	}
 }

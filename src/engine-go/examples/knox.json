@@ -1,9 +1,9 @@
 {
-    "title":"My first l-system!",
+    "title":"KNOX!",
     "axiom":"F", 
     "iteration":"10",
     "magnitude":"5",
-    "angle":"60",
+    "angle":"90",
     "ix":"500",
     "iy":"400",
     "width":"1200",

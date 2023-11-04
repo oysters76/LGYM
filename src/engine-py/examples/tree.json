@@ -1,0 +1,22 @@
+{
+    "title":"Fern Tree",
+    "axiom":"X", 
+    "iterations":"6",
+    "magnitude":"10",
+    "angle":"25",
+    "ix":"-200",
+    "iy":"-200",
+    "width":"1200",
+    "height":"800",
+    "cmds":{
+        "F":"forward",
+        "+":"left",
+        "-":"right",
+        "[":"push",
+        "]":"pop"
+    },
+    "rules":{
+        "X":"F+[[X]-X]-F[-FX]+X", 
+        "F":"FF"
+    }
+}

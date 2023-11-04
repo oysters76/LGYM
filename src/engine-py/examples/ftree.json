@@ -1,0 +1,22 @@
+{
+    "title":"Fractal Tree",
+    "axiom":"0", 
+    "iterations":"10",
+    "magnitude":"1",
+    "angle":"45",
+    "ix":"-200",
+    "iy":"-200",
+    "width":"2200",
+    "height":"2000",
+    "cmds":{
+        "1":"forward",
+        "[":"push",
+        "]":"pop",
+        "L":"left",
+        "R":"right"
+    },
+    "rules":{
+        "1":"11", 
+        "0":"1[L0]R0"
+    }
+}

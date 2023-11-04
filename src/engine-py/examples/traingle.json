@@ -1,0 +1,21 @@
+{
+    "title":"Sierpinski triangle",
+    "axiom":"F-F-F", 
+    "iterations":"10",
+    "magnitude":"5",
+    "angle":"120",
+    "ix":"-50",
+    "iy":"-50",
+    "width":"1200",
+    "height":"800",
+    "cmds":{
+        "F":"forward",
+        "G":"forward",
+        "+":"left",
+        "-":"right"
+    },
+    "rules":{
+        "F":"F-G+F+G-F", 
+        "G":"GG"
+    }
+}

@@ -1,0 +1,19 @@
+{
+    "title":"Fractal Demo",
+    "axiom":"F", 
+    "iterations":"10",
+    "magnitude":"2",
+    "angle":"90",
+    "ix":"50",
+    "iy":"50",
+    "width":"1200",
+    "height":"800",
+    "cmds":{
+        "F":"forward",
+        "+":"left",
+        "-":"right"
+    },
+    "rules":{
+        "F":"F+F-F-F+F"
+    }
+}

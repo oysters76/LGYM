@@ -63,5 +63,6 @@ func RunLSystem(filename string) {
 }
 
 func main() {
-	RunLSystem("examples/fractal.json")
+	RunLSystem("examples/dragon.json")
+	//TestDrawing()
 }
