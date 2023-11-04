@@ -2,6 +2,7 @@
     Engine that parses and converts l-system to a render program
 '''
 import json
+import sys
 from turtle import * 
 
 FORWARD = "forward" 
@@ -124,4 +125,9 @@ def run_lsys(filename):
     prog = to_program(lconfig, lsys)
     render(prog, lconfig)
 
-run_lsys("./examples/ftree.json")
+if __name__ == "__main__":
+    args = sys.argv 
+    if len(args) <= 1:
+        print("Error: Enter filepath for L-System Config json file.")
+        sys.exit(1)
+    run_lsys(sys.argv[1])
