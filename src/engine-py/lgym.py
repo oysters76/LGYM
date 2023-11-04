@@ -3,7 +3,6 @@
 '''
 import json
 from turtle import * 
-from lsystem import gen_lsystem 
 
 FORWARD = "forward" 
 LEFT    = "left"
