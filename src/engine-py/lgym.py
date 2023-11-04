@@ -1,3 +1,4 @@
+#!/usr/bin/env python3 
 '''
     Engine that parses and converts l-system to a render program
 '''
@@ -97,6 +98,8 @@ def render(prog : list, lconfig : LConfig, speedt="fastest", modet="logo") -> No
     screensize(lconfig.width, lconfig.height)
     clearscreen() 
     speed(speedt)
+    delay(0)
+    ht()
     mode(modet)
     up()
     setpos(lconfig.ix,lconfig.iy)
