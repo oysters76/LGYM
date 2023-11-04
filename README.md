@@ -38,3 +38,10 @@ func main(){
    Renderlsystem(prog, len(prog), &lconfig)  // render graphics via commands
 }
 ```
+Or more simply, 
+
+```go
+func main(){
+  RunLSystem("examples/fractal.json")
+}
+```
