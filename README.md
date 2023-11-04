@@ -26,6 +26,20 @@ All of the above new ideas would be implemented using "golang" and "raylib" (go 
 1. [golang](https://go.dev/)             : Much faster than Python, suitable for writing this simulation project.
 2. [raylib](https://github.com/gen2brain/raylib-go) : For rendering graphics and GUI. 
 
+## Basic Usage via Python with Examples: 
+Invoke the lgym script with an argument for where your l-system configuration is stored. 
+For examples of l-system configurations, look into: "src/engine-py/examples" 
+
+<ul>
+ <li>Fern Example</li>
+<img src="examples/fern" width="450" height="250"><br/>
+ <li>Fractal Tree Example</li>
+<img src="examples/ftree" width="450" height="250"><br/>
+ <li>Traingle Example</li>
+<img src="examples/traingles" width="450" height="250"><br/>
+ <li>Fractal Example</li>
+<img src="examples/fractal" width="450" height="250">
+</ul>
 
 ## Basic Usage via Golang (Still in development) 
 The following simple golang program illustrates the process in which this tool can be used: 
